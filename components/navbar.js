@@ -19,6 +19,10 @@ export default function Navbar(props) {
     {
       label: "Blogs",
       href: "/blogs"
+    },
+    {
+      label: "Contact",
+      href: "/contact"
     }
   ];
 

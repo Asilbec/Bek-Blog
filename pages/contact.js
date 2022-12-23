@@ -10,6 +10,7 @@ import {
   MailIcon,
   PhoneIcon
 } from "@heroicons/react/outline";
+
 export default function Contact({ siteconfig }) {
   const {
     register,
@@ -29,8 +30,8 @@ export default function Contact({ siteconfig }) {
 
   const { submit: onSubmit } = useWeb3Forms({
     apikey: apiKey,
-    from_name: "Stablo Template",
-    subject: "New Contact Message from Stablo Website",
+    from_name: "Bek Blogs",
+    subject: "New Contact Message from Bek Blogs Website",
     onSuccess: (msg, data) => {
       setIsSuccess(true);
       setMessage(msg);
@@ -48,24 +49,20 @@ export default function Contact({ siteconfig }) {
         <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
           Contact
         </h1>
-        <div className="text-center">
-          <p className="text-lg">We are a here to help.</p>
-        </div>
 
         <div className="grid my-10 md:grid-cols-2">
           <div className="my-10">
             <h2 className="text-2xl font-semibold dark:text-white">
-              Contact Stablo
+              Contact Me
             </h2>
             <p className="max-w-sm mt-5">
-              Have something to say? We are here to help. Fill up the
-              form or send email or call phone.
+              Have something to say? I would love to heart it!
             </p>
 
             <div className="mt-5">
               <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
                 <LocationMarkerIcon className="w-4 h-4" />
-                <span>1734 Sanfransico, CA 93063</span>
+                <span>Pittsburgh,PA</span>
               </div>
               {siteconfig?.email && (
                 <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">

@@ -1,7 +1,7 @@
 {
     "version": 2,
-    "title": "Stablo Next.js Minimal Blog Template",
-    "description": "Stablo is a Minimalblog website template built with Next.js, TailwindCSS & Sanity CMS",
+    "title": "Bek Blogs",
+    "description": "Bek Blogs",
     "previewMedia": {
         "type": "image",
         "src": "public/img/opengraph.jpg",
