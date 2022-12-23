@@ -97,18 +97,18 @@ export default function Post(props) {
           </div> */}
 
           <Container className="!pt-0">
-            <div className="max-w-screen-md mx-auto ">
-              <div className="text-center">
+            <div className="max-w-2xl	 mx-auto ">
+              <div>
                 <CategoryLabel categories={post.categories} />
               </div>
 
-              <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
+              <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-left lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
                 {post.title}
               </h1>
 
-              <div className="flex justify-center mt-3 space-x-3 text-gray-500 ">
+              <div className="flex justify-start mt-3 space-x-3 text-gray-500 ">
                 <div className="flex items-center gap-3">
-                  <div className="relative flex-shrink-0 w-10 h-10">
+                  <div className="relative  flex-shrink-0 w-10 h-10">
                     {AuthorimageProps && (
                       <Image
                         src={AuthorimageProps.src}
@@ -149,7 +149,7 @@ export default function Post(props) {
             </div>
           </Container>
 
-          <div className="relative z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg aspect-video">
+          <div className="relative z-0 max-w-2xl box-border	p-5 mx-auto overflow-hidden lg:rounded-lg aspect-video">
             {imageProps && (
               <Image
                 src={imageProps.src}

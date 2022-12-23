@@ -67,7 +67,7 @@ export default function Navbar(props) {
                           priority={true}
                         />
                       ) : (
-                        <span className="block text-right">
+                        <span className="block text-left">
                           BekDev
                         </span>
                       )}

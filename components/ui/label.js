@@ -11,7 +11,7 @@ export default function Label(props) {
   return (
     <span
       className={cx(
-        "inline-block mt-5 text-xs font-medium tracking-wider uppercase ",
+        "inline-block mt-5 text-xs font-medium tracking-wider uppercase bg-stone-800 font-bold		 p-1	 ",
         color[props.color] || color[pink]
       )}>
       {props.children}
