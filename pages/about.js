@@ -15,7 +15,7 @@ export default function About({ authors, siteconfig }) {
         </h1>
         <div className="text-center">
           <p className="text-lg">
-            I'm a passionate software engineer.
+            I am a passionate software engineer.
           </p>
         </div>
 
