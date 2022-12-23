@@ -17,30 +17,12 @@ export default function Navbar(props) {
       href: "/about"
     },
     {
-      label: "Contact",
-      href: "/contact"
+      label: "Blogs",
+      href: "/blogs"
     }
   ];
 
-  const rightmenu = [
-    {
-      label: "Archive",
-      href: "/archive"
-    },
-    {
-      label: "Pro Version",
-      href: "https://stablo-pro.web3templates.com/",
-      external: true,
-      badge: "new"
-    },
-    {
-      label: "Download",
-      href: "https://web3templates.com/templates/stablo-minimal-blog-website-template",
-      external: true
-    }
-  ];
-
-  const mobilemenu = [...leftmenu, ...rightmenu];
+  const mobilemenu = [...leftmenu];
 
   return (
     <Container>
@@ -49,7 +31,7 @@ export default function Navbar(props) {
           {({ open }) => (
             <>
               <div className="flex flex-wrap justify-between md:gap-10 md:flex-nowrap">
-                <div className="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-end md:w-auto md:order-none md:flex-1">
+                <div className="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-start md:w-auto md:order-none md:flex-1">
                   {leftmenu.map((item, index) => (
                     <Link href={item.href} key={index}>
                       <a className="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500">
@@ -69,8 +51,8 @@ export default function Navbar(props) {
                           priority={true}
                         />
                       ) : (
-                        <span className="block text-center">
-                          Stablo
+                        <span className="block text-left">
+                          BekDev
                         </span>
                       )}
                     </a>
@@ -85,8 +67,8 @@ export default function Navbar(props) {
                           priority={true}
                         />
                       ) : (
-                        <span className="block text-center">
-                          Stablo
+                        <span className="block text-right">
+                          BekDev
                         </span>
                       )}
                     </a>
@@ -113,24 +95,6 @@ export default function Navbar(props) {
                       )}
                     </svg>
                   </Disclosure.Button>
-                </div>
-
-                <div className="flex-col items-center justify-start order-2 hidden w-full md:flex md:flex-row md:w-auto md:flex-1 md:order-none">
-                  {rightmenu.map((item, index) => (
-                    <Link href={item.href} key={index}>
-                      <a
-                        className="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500"
-                        target={item.external ? "_blank" : ""}
-                        rel={item.external ? "noopener" : ""}>
-                        <span> {item.label}</span>
-                        {item.badge && (
-                          <span className="bg-blue-100 text-blue-600 text-xs font-semibold ml-2 px-2 py-0.5 rounded dark:bg-cyan-200 dark:text-blue-800 ">
-                            {item.badge}
-                          </span>
-                        )}
-                      </a>
-                    </Link>
-                  ))}
                 </div>
               </div>
               <Disclosure.Panel>
