@@ -4,8 +4,8 @@
     "description": "Bek Blogs",
     "previewMedia": {
         "type": "image",
-        "src": "public/img/opengraph.jpg",
-        "alt": "Stablo Next.js Minimal Blog Template"
+        "src": "public/img/bekdevLogo.png",
+        "alt": "Bek Blogs"
     },
     "technologies": [{
             "id": "vercel",

@@ -49,13 +49,16 @@ export default function PostList({ post, aspect, preloadImage }) {
         <h2 className="mt-2 text-lg font-semibold tracking-normal text-brand-primary dark:text-white">
           <Link href={`/post/${post.slug.current}`}>
             <span
-              className="     bg-gradient-to-r from-yellow-200 to-yellow-100 dark:from-purple-800 dark:to-purple-900
-          bg-[length:0px_10px]
+              className="
+              bg-gradient-to-r from-blue-600 to-blue-600 dark:from-blue-600 dark:to-blue-600
+            bg-[length:0px_0px]
           bg-left-bottom
           bg-no-repeat
           transition-[background-size]
-          duration-500
-          hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px]">
+          duration-300
+          hover:bg-[length:100%_10px] group-hover:bg-[length:110%_25px]
+          group-hover:text-white
+          ">
               {post.title}
             </span>
           </Link>
