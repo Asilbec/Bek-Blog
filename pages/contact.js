@@ -10,6 +10,7 @@ import {
   MailIcon,
   PhoneIcon
 } from "@heroicons/react/outline";
+import { AiFillLinkedin } from "react-icons/ai";
 
 export default function Contact({ siteconfig }) {
   const {
@@ -56,7 +57,7 @@ export default function Contact({ siteconfig }) {
               Contact Me
             </h2>
             <p className="max-w-sm mt-5">
-              Have something to say? I would love to heart it!
+              Message me (yes i actually read these!)
             </p>
 
             <div className="mt-5">
@@ -72,14 +73,13 @@ export default function Contact({ siteconfig }) {
                   </a>
                 </div>
               )}
-              {siteconfig?.phone && (
-                <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
-                  <PhoneIcon className="w-4 h-4" />
-                  <a href={`tel:${siteconfig.phone}`}>
-                    {siteconfig.phone}
-                  </a>
-                </div>
-              )}
+
+              <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
+                <AiFillLinkedin className="w-4 h-4" />
+                <a href={"https://www.linkedin.com/in/bek-o/"}>
+                  LinkedIn
+                </a>
+              </div>
             </div>
           </div>
           <div>

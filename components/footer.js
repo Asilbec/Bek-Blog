@@ -22,6 +22,20 @@ export default function Footer(props) {
             target="_blank">
             Github
           </a>
+          {" - "}
+          <a
+            href="https://www.linkedin.com/in/bek-o/"
+            rel="noopener"
+            target="_blank">
+            LinkedIn
+          </a>
+          {" - "}
+          <a
+            href="https://twitter.com/bek_Devv"
+            rel="noopener"
+            target="_blank">
+            Twitter
+          </a>
         </span>
       </div>
       <div className="flex items-center justify-between mt-2">
