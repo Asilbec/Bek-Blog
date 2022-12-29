@@ -18,7 +18,7 @@ export default function PostList({ post, aspect, preloadImage }) {
       <div className="cursor-pointer group">
         <div
           className={cx(
-            "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800   hover:scale-105",
+            "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 hover:scale-105",
             aspect === "landscape" ? "aspect-video" : "aspect-square"
           )}>
           <Link href={`/post/${post.slug.current}`}>
@@ -49,7 +49,7 @@ export default function PostList({ post, aspect, preloadImage }) {
         <h2 className="mt-2 text-lg font-semibold tracking-normal text-brand-primary dark:text-white">
           <Link href={`/post/${post.slug.current}`}>
             <span
-              className="     bg-gradient-to-r from-green-200 to-green-100 dark:from-purple-800 dark:to-purple-900
+              className="     bg-gradient-to-r from-yellow-200 to-yellow-100 dark:from-purple-800 dark:to-purple-900
           bg-[length:0px_10px]
           bg-left-bottom
           bg-no-repeat
