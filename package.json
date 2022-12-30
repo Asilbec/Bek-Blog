@@ -26,6 +26,7 @@
     "next-seo": "^5.4.0",
     "next-themes": "^0.2.0",
     "react": "^18.2.0",
+    "react-code-blocks": "^0.0.9-0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.31.2",
     "react-icons": "^4.7.1",

@@ -1,10 +1,10 @@
 {
-  "name": "stablo",
+  "name": "bek",
   "private": true,
   "version": "1.0.2",
-  "description": "Stablo is a JamStack Blog template built with Next.js, Tailwind CSS & Sanity CMS",
+  "description": "Bek",
   "main": "package.json",
-  "author": "Surjith S M <surjithctly@gmail.com>",
+  "author": "Bek <asilbekomonkulov@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
     "start": "sanity start",
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "@sanity/base": "^2.29.8",
-    "@sanity/code-input": "^3.0.1",
+    "@sanity/code-input": "^2.30.0",
     "@sanity/core": "^2.29.5",
     "@sanity/default-layout": "^2.29.8",
     "@sanity/default-login": "^2.29.8",
@@ -25,6 +25,7 @@
     "eslint": "^8.6.0",
     "prop-types": "^15.7",
     "react": "^18.2",
+    "react-code-blocks": "^0.0.9-0",
     "react-dom": "^18.2",
     "react-icons": "^4.3.1",
     "sanity-plugin-asset-source-unsplash": "^0.2.1",
@@ -32,6 +33,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/surjithctly/pajamas.git"
+    "url": "https://github.com/Asilbec"
   }
 }
