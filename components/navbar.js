@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import GetImage from "@utils/getImage";
 import { myLoader } from "@utils/all";
+import { useRouter } from "next/router";
+import { cx } from "@utils/all";
 
 export default function Navbar(props) {
   const leftmenu = [
@@ -25,6 +27,14 @@ export default function Navbar(props) {
       href: "/contact"
     }
   ];
+  const router = useRouter();
+  const route = router.route.toLocaleLowerCase();
+
+  function giveBackLowerCase(passedRoute) {
+    if (passedRoute.href === route) {
+      return "text-sky-500";
+    } else return "text-gray-600";
+  }
 
   const mobilemenu = [...leftmenu];
 
@@ -38,7 +48,11 @@ export default function Navbar(props) {
                 <div className="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-start md:w-auto md:order-none md:flex-1">
                   {leftmenu.map((item, index) => (
                     <Link href={item.href} key={index}>
-                      <a className="px-5 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500">
+                      <a
+                        className={cx(
+                          "hover:text-blue-500 px-5 py-2 text-sm font-medium ",
+                          giveBackLowerCase(item)
+                        )}>
                         {item.label}
                       </a>
                     </Link>
