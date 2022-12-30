@@ -19,15 +19,15 @@ export default function About({ authors, siteconfig }) {
           </p>
         </div>
 
-        <div className="justify-center content-center mt-6 mb-16">
-          {authors.slice(0, 1).map(author => {
+        <div className="flex justify-evenly	gap-5 mt-6 mb-16 md:mt-16 md:mb-32 md:gap-16 ">
+          {authors.slice(0, 2).map(author => {
             const { width, height, ...imgprops } = GetImage(
               author?.image
             );
             return (
               <div
                 key={author._id}
-                className="relative max-w-xs	 self-center m-auto	 justify-self-center content-center overflow-hidden rounded-md aspect-square ">
+                className="relative  overflow-hidden rounded-md aspect-square w-full 	 max-w-xs 	">
                 <Image
                   {...imgprops}
                   alt={author.name || " "}
@@ -42,12 +42,9 @@ export default function About({ authors, siteconfig }) {
 
         <div className="mx-auto prose text-center dark:prose-invert mt-14">
           <p>
-            Hello, and welcome to my blog! My name is Bek Omonkulov
-            and I am Software Engineer. I have always been passionate
-            about Software Engineering. On this blog, I will share my
-            thoughts, experiences, and insights on the current world .
-            I hope you enjoy reading my posts and find them helpful or
-            entertaining. Thank you for visiting my blog!
+            Welcome to our blog! Here, we're looking to interesting
+            thoughts, updates on our latest projects, tutorials, and
+            more! We hope you find them entertaining.
           </p>
           <p>
             <Link href="/contact">Get in touch</Link>
