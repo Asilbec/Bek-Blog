@@ -50,7 +50,7 @@ export default function PostList({ post, aspect, preloadImage }) {
           <Link href={`/post/${post.slug.current}`}>
             <span
               className="
-              bg-gradient-to-r from-yellow-200 to-yellow-200 dark:from-yellow-400 dark:to-yellow-400
+              bg-gradient-to-r from-yellow-400 to-yellow-400 dark:from-yellow-400 dark:to-yellow-400
             bg-[length:0px_0px]
           bg-left-bottom
           bg-no-repeat
