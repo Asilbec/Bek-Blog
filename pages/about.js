@@ -15,7 +15,7 @@ export default function About({ authors, siteconfig }) {
         </h1>
         <div className="text-center">
           <p className="text-lg">
-            I am a passionate software engineer.
+            We are passionate software engineers.
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function About({ authors, siteconfig }) {
 
         <div className="mx-auto prose text-center dark:prose-invert mt-14">
           <p>
-            Welcome to our blog! Here, we're looking to interesting
+            Welcome to our blog! Here, we are looking to interesting
             thoughts, updates on our latest projects, tutorials, and
             more! We hope you find them entertaining.
           </p>
