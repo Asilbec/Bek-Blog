@@ -6,14 +6,22 @@ import { parseISO, format } from "date-fns";
 import { PhotographIcon } from "@heroicons/react/outline";
 import CategoryLabel from "@components/blog/category";
 
-export default function PostList({ post, aspect, preloadImage }) {
+export default function PostList({
+  post,
+  aspect,
+  preloadImage,
+  vis
+}) {
   const imageProps = post?.mainImage
     ? GetImage(post.mainImage)
     : null;
   const AuthorimageProps = post?.author?.image
     ? GetImage(post.author.image)
     : null;
-  return (
+
+  console.log(vis);
+
+  return vis !== false ? (
     <>
       <div className="cursor-pointer group">
         <div
@@ -107,5 +115,7 @@ export default function PostList({ post, aspect, preloadImage }) {
         </div>
       </div>
     </>
+  ) : (
+    <></>
   );
 }
