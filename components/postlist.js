@@ -19,8 +19,6 @@ export default function PostList({
     ? GetImage(post.author.image)
     : null;
 
-  console.log(vis);
-
   return vis !== false ? (
     <>
       <div className="cursor-pointer group">
