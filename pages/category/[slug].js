@@ -48,14 +48,12 @@ export default function Post(props) {
     ? GetImage(siteConfig?.openGraphImage).src
     : defaultOG.src;
 
-  console.log(categorydata);
-
   return (
     <>
       {posts && siteConfig && (
         <Layout {...siteConfig}>
           <NextSeo
-            title={`Blog — ${siteConfig?.title}`}
+            title={categorydata.title + " posts"}
             description={siteConfig?.description || ""}
             canonical={siteConfig?.url}
             openGraph={{
@@ -87,11 +85,7 @@ export default function Post(props) {
             </div>
             <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3 ">
               {posts.map((post, index) => (
-                <PostList
-                  key={post._id}
-                  post={post}
-                  aspect="square"
-                />
+                <PostList key={index} post={post} aspect="square" />
               ))}
             </div>
           </Container>

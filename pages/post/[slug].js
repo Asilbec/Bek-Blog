@@ -71,7 +71,15 @@ export default function Post(props) {
                   alt: ""
                 }
               ],
-              site_name: siteConfig.title
+              site_name: siteConfig.title,
+              type: "article",
+              article: {
+                publishedTime: post.publishedAt,
+                modifiedTime: post.publishedAt,
+                expirationTime: "2022-12-21T22:04:11Z",
+                section: post.categories[0].title,
+                authors: [post.author.name]
+              }
             }}
             twitter={{
               cardType: "summary_large_image"
