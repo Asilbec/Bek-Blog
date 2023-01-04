@@ -84,17 +84,19 @@ export default function PostList({
           <div className="flex items-center gap-3">
             <div className="relative flex-shrink-0 w-5 h-5">
               {post.author.image && (
-                <Image
-                  src={AuthorimageProps.src}
-                  blurDataURL={AuthorimageProps.blurDataURL}
-                  loader={AuthorimageProps.loader}
-                  objectFit="cover"
-                  layout="fill"
-                  alt={post?.author?.name}
-                  placeholder="blur"
-                  sizes="30px"
-                  className="rounded-full"
-                />
+                <Link href={`/author/${post.author.slug.current}`}>
+                  <Image
+                    src={AuthorimageProps.src}
+                    blurDataURL={AuthorimageProps.blurDataURL}
+                    loader={AuthorimageProps.loader}
+                    objectFit="cover"
+                    layout="fill"
+                    alt={post?.author?.name}
+                    placeholder="blur"
+                    sizes="30px"
+                    className="rounded-full"
+                  />
+                </Link>
               )}
             </div>
             <span className="text-sm">{post.author.name}</span>
