@@ -102,6 +102,7 @@ export async function getStaticProps({ params, preview = false }) {
   const categories = await client.fetch(authortest, {
     author: params.slug
   });
+  console.log(categories);
 
   return {
     props: {
