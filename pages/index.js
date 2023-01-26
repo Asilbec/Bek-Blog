@@ -7,6 +7,7 @@ import defaultOG from "../public/img/opengraph.jpg";
 import { postquery, configQuery } from "@lib/groq";
 import GetImage from "@utils/getImage";
 import PostList from "@components/postlist";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
@@ -76,6 +77,7 @@ export default function Post(props) {
           </Container>
         </Layout>
       )}
+      <Analytics />
     </>
   );
 }
