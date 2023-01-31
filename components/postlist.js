@@ -24,7 +24,7 @@ export default function PostList({
       <div className="cursor-pointer group">
         <div
           className={cx(
-            "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 hover:scale-105",
+            "relative overflow-hidden transition-all bg-gray-100 rounded-md dark:bg-gray-800 hover:border-2	",
             aspect === "landscape" ? "aspect-video" : "aspect-square"
           )}>
           <Link href={`/post/${post.slug.current}`}>
@@ -56,21 +56,21 @@ export default function PostList({
           <Link href={`/post/${post.slug.current}`}>
             <span
               className="
-              bg-gradient-to-r from-yellow-400 to-yellow-400 dark:from-yellow-400 dark:to-yellow-400
+              bg-gradient-to-r from-black to-black dark:from-white dark:to-white
             bg-[length:0px_0px]
           bg-left-bottom
           bg-no-repeat
           transition-[background-size]
-          duration-300
+          duration-200
           hover:bg-[length:100%_10px] group-hover:bg-[length:110%_25px]
-          group-hover:text-white
+          group-hover:text-white dark:group-hover:text-black
           ">
               {post.title}
             </span>
           </Link>
         </h2>
 
-        <div className="hidden">
+        <div>
           {post.excerpt && (
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">
               <Link href={`/post/${post.slug.current}`}>
