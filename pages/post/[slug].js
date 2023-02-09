@@ -213,7 +213,6 @@ const MainImage = ({ image }) => {
 };
 
 export async function getStaticProps({ params, preview = false }) {
-  //console.log(params);
   const post = await getClient(preview).fetch(singlequery, {
     slug: params.slug
   });
