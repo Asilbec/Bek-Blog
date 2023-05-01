@@ -67,7 +67,7 @@ export default function Post(props) {
                 See all posts I have ever written.
               </p>
             </div>
-            <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-3 ">
+            <div className="grid  mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-4 ">
               {posts.map(post => (
                 <PostList
                   key={post._id}
