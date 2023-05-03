@@ -51,7 +51,7 @@ export default function PostList({
             </a>
           </Link>
         </div>
-        <h2 className="mt-5 text-lg font-semibold tracking-normal text-brand-primary dark:text-white">
+        <h2 className="mt-5 text-lg font-bold tracking-normal text-brand-primary dark:text-white">
           <Link href={`/post/${post.slug.current}`}>
             <span
               className="
