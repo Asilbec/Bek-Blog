@@ -11,7 +11,7 @@ export default function Label(props) {
   return (
     <span
       className={cx(
-        "inline-block mt-5 text-sm font-light uppercase font-bold text-white rounded-sm bg-black p-1"
+        "inline-block mt-5 text-sm font-light uppercase font-bold text-black dark:text-white rounded-sm bg-white dark:bg-black p-1"
       )}>
       #{props.children}
     </span>
