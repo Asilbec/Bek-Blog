@@ -21,7 +21,7 @@ export default function PostList({
 
   return vis !== false ? (
     <>
-      <div className="cursor-pointer group relative">
+      <div className="cursor-pointer group relative mt-10">
         <div
           className={cx(
             "relative overflow-hidden transition-all bg-gray-100 dark:bg-gray-800 ",
@@ -51,7 +51,16 @@ export default function PostList({
             </a>
           </Link>
         </div>
-        <h2 className="mt-5 text-lg font-bold tracking-normal text-brand-primary dark:text-white">
+        <div className="mb-2">
+          <CategoryLabel categories={post.categories} />
+          <a
+            href={`/author/${post.author.slug.current}`}
+            className="mb-2 hover:underline text-coolGray-500 font-medium absolute bottom-0">
+            {format(parseISO(post.publishedAt), "MMMM do, yyyy")}
+          </a>
+        </div>
+
+        <h2 className=" text-lg font-bold tracking-normal text-brand-primary dark:text-white mb-16">
           <Link href={`/post/${post.slug.current}`}>
             <span
               className="

@@ -56,7 +56,7 @@ export default function Post(props) {
           />
           <Container>
             <div className="grid gap-10 mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-4 ">
-              {posts.slice(0, 6).map(post => (
+              {posts.slice(2, 6).map(post => (
                 <PostList
                   key={post._id}
                   post={post}
