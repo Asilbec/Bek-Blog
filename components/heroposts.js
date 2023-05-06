@@ -6,7 +6,7 @@ import { parseISO, format } from "date-fns";
 import { PhotographIcon } from "@heroicons/react/outline";
 import CategoryLabel from "@components/blog/category";
 
-export default function PostList({
+export default function HeroPostList({
   post,
   aspect,
   preloadImage,
@@ -51,36 +51,25 @@ export default function PostList({
             </a>
           </Link>
         </div>
-        <div className="mb-2">
+        <div className="">
           <CategoryLabel categories={post.categories} />
           <a
             href={`/author/${post.author.slug.current}`}
-            className="mb-2 hover:underline text-coolGray-500 font-medium absolute bottom-0">
+            className="mb-2 hover:underline text-coolGray-900 font-bold absolute bottom-0">
             {format(parseISO(post.publishedAt), "MMMM do, yyyy")}
           </a>
         </div>
 
-        <h2 className=" text-2xl font-bold tracking-normal text-brand-primary dark:text-white mb-16">
+        <h2 className=" text-xl font-extrabold tracking-normal text-brand-primary dark:text-white mb-14">
           <Link href={`/post/${post.slug.current}`}>
             <span
               className="
-             
-
+              transition-all
           ">
               {post.title}
             </span>
           </Link>
         </h2>
-
-        <div className="hidden">
-          {post.excerpt && (
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 line-clamp-3">
-              <Link href={`/post/${post.slug.current}`}>
-                {post.excerpt}
-              </Link>
-            </p>
-          )}
-        </div>
       </div>
     </>
   ) : (

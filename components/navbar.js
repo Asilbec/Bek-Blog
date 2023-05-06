@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Disclosure } from "@headlessui/react";
 import Container from "@components/container";
 import Link from "next/link";
@@ -33,24 +33,73 @@ export default function Navbar(props) {
   function giveBackLowerCase(passedRoute) {
     if (passedRoute.href === route) {
       return "text-sky-500";
-    } else return "text-gray-600";
+    } else return "text-black dark:text-white";
   }
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPosition = window.scrollY;
+      setScrollPosition(currentScrollPosition);
+
+      // Calculate opacity based on scroll position (100 is the threshold)
+      const calculatedOpacity =
+        currentScrollPosition > 100 ? 1 : currentScrollPosition / 100;
+      setOpacity(calculatedOpacity);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const mobilemenu = [...leftmenu];
 
   return (
-    <Container>
+    <div
+      className={`w-full  py-2 px-2 absolute sticky z-10 top-0 bg-white dark:bg-black
+       `}>
       <nav>
         <Disclosure>
           {({ open }) => (
             <>
-              <div className="flex flex-wrap justify-between md:gap-10 md:flex-nowrap">
-                <div className="flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-start md:w-auto md:order-none md:flex-1">
+              <div className=" flex flex-wrap justify-between md:gap-10 ml-2 md:flex-nowrap">
+                <Link href="/">
+                  <a className="w-16 dark:hidden">
+                    {props.logo ? (
+                      <Image
+                        {...GetImage(props.logo)}
+                        alt="Logo"
+                        sizes="(max-width: 640px) 100vw, 200px"
+                        priority={true}
+                      />
+                    ) : (
+                      <span className="block text-left">BekDev</span>
+                    )}
+                  </a>
+                </Link>
+                <Link href="/">
+                  <a className="hidden w-16 dark:block">
+                    {props.logoalt ? (
+                      <Image
+                        {...GetImage(props.logoalt)}
+                        alt="Logo"
+                        sizes="(max-width: 640px) 100vw, 200px"
+                        priority={true}
+                      />
+                    ) : (
+                      <span className="block text-left">BekDev</span>
+                    )}
+                  </a>
+                </Link>
+                <div className=" flex-col items-center justify-start order-1 hidden w-full md:flex md:flex-row md:justify-start md:w-auto md:order-none md:flex-1">
                   {leftmenu.map((item, index) => (
                     <Link href={item.href} key={index}>
                       <a
                         className={cx(
-                          "hover:text-blue-500 px-5 py-2 text-sm font-medium ",
+                          "hover:text-blue-500 px-5 py-2 text-2xl font-bold ",
                           giveBackLowerCase(item)
                         )}>
                         {item.label}
@@ -58,39 +107,7 @@ export default function Navbar(props) {
                     </Link>
                   ))}
                 </div>
-                <div className="flex items-center justify-between w-full md:w-auto">
-                  <Link href="/">
-                    <a className="w-16 dark:hidden">
-                      {props.logo ? (
-                        <Image
-                          {...GetImage(props.logo)}
-                          alt="Logo"
-                          sizes="(max-width: 640px) 100vw, 200px"
-                          priority={true}
-                        />
-                      ) : (
-                        <span className="block text-left">
-                          BekDev
-                        </span>
-                      )}
-                    </a>
-                  </Link>
-                  <Link href="/">
-                    <a className="hidden w-16 dark:block">
-                      {props.logoalt ? (
-                        <Image
-                          {...GetImage(props.logoalt)}
-                          alt="Logo"
-                          sizes="(max-width: 640px) 100vw, 200px"
-                          priority={true}
-                        />
-                      ) : (
-                        <span className="block text-left">
-                          BekDev
-                        </span>
-                      )}
-                    </a>
-                  </Link>
+                <div className="flex items-center justify-between w-full md:w-auto md:mr-5">
                   <Disclosure.Button
                     aria-label="Toggle Menu"
                     className="px-2 py-1 ml-auto text-gray-500 rounded-md md:hidden focus:text-blue-500 focus:outline-none dark:text-gray-300 ">
@@ -133,6 +150,6 @@ export default function Navbar(props) {
           )}
         </Disclosure>
       </nav>
-    </Container>
+    </div>
   );
 }

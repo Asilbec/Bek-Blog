@@ -18,6 +18,7 @@ import defaultOG from "/public/img/opengraph.jpg";
 import { singlequery, configQuery, pathquery } from "@lib/groq";
 import CategoryLabel from "@components/blog/category";
 import AuthorCard from "@components/blog/authorCard";
+import { cx } from "@utils/all";
 
 export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
@@ -54,163 +55,92 @@ export default function Post(props) {
   return (
     <>
       {post && siteConfig && (
-        <Layout {...siteConfig}>
+        <>
           <NextSeo
-            title={`${post.title} - ${siteConfig.title}`}
+            title={`${post.title} | OpenAI Blog`}
             description={post.excerpt || ""}
-            canonical={`${siteConfig?.url}/post/${post.slug.current}`}
             openGraph={{
-              url: `${siteConfig?.url}/post/${post.slug.current}`,
-              title: `${post.title} - ${siteConfig.title}`,
+              title: `${post.title} | OpenAI Blog`,
               description: post.excerpt || "",
-              images: [
-                {
-                  url: GetImage(post?.mainImage).src || ogimage,
-                  width: 800,
-                  height: 600,
-                  alt: ""
-                }
-              ],
-              site_name: siteConfig.title,
+              url: `https://openai.com/blog/${post.slug.current}`,
               type: "article",
               article: {
                 publishedTime: post.publishedAt,
-                modifiedTime: post.publishedAt,
-                expirationTime: "2022-12-21T22:04:11Z",
-                section: post.categories[0].title,
-                authors: [post.author.name]
+                modifiedTime: post._updatedAt,
+                tags: post.categories.map(category => category.title)
               }
             }}
-            twitter={{
-              cardType: "summary_large_image"
-            }}
           />
-          {/*
-          <div className="relative bg-white/20">
-            <div className="absolute w-full h-full -z-10">
-              {post?.mainImage && (
-                <Image
-                  {...GetImage(post.mainImage)}
-                  alt={post.mainImage?.alt || "Thumbnail"}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              )}
-            </div>
-            <Container className="py-48">
-              <h1 className="relative max-w-3xl mx-auto mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl after:absolute after:w-full after:h-full after:bg-white after:inset-0 after:-z-10 after:blur-2xl after:scale-150">
-                {post.title}
-              </h1>
-            </Container>
-          </div> */}
-
-          <Container className="!pt-0">
-            <div className="max-w-2xl	 mx-auto ">
-              <div>
-                <CategoryLabel categories={post.categories} />
-              </div>
-
-              <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-left lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
-                {post.title}
-              </h1>
-
-              <div className="flex justify-start mt-3 space-x-3 text-gray-500 ">
-                <div className="flex items-center gap-3">
-                  <div className="relative  flex-shrink-0 w-10 h-10">
-                    {AuthorimageProps && (
-                      <Link
-                        href={`/author/${post.author.slug.current}`}>
-                        <Image
-                          src={AuthorimageProps.src}
-                          blurDataURL={AuthorimageProps.blurDataURL}
-                          loader={AuthorimageProps.loader}
-                          objectFit="cover"
-                          alt={post?.author?.name}
-                          placeholder="blur"
-                          layout="fill"
-                          className="rounded-full"
-                        />
-                      </Link>
-                    )}
-                  </div>
-                  <div>
-                    <p className="text-gray-800 dark:text-gray-400">
-                      {post.author.name}
-                    </p>
-                    <div className="flex items-center space-x-2 text-sm">
+          <Layout>
+            <div className="relative">
+              <div className="relative bg-black text-white max-h-[80vh]">
+                <Container className="flex flex-wrap py-10 md:py-20 items-center">
+                  <div className="w-full md:w-1/2">
+                    <CategoryLabel categories={post.categories} />
+                    <h1 className="text-4xl md:text-6xl font-bold mt-2 mb-3">
+                      {post.title}
+                    </h1>
+                    <div className="flex items-center gap-3 text-white text-sm">
                       <time
-                        className="text-gray-500 dark:text-gray-400"
-                        dateTime={
-                          post?.publishedAt || post._createdAt
-                        }>
-                        {format(
-                          parseISO(
-                            post?.publishedAt || post._createdAt
-                          ),
-                          "MMMM dd, yyyy"
-                        )}
+                        className="text-gray-300"
+                        dateTime={post.publishedAt}>
+                        {new Date(post.publishedAt).toDateString()}
                       </time>
                       <span>
                         · {post.estReadingTime || "5"} min read
                       </span>
                     </div>
+                    <div className="mt-5">
+                      {post.categories.map(category => (
+                        <CategoryLabel
+                          key={category._id}
+                          category={category}
+                          className="mr-2"
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
+                  <div className="w-full md:w-1/2">
+                    {post.mainImage && (
+                      <div className="relative h-[300px] md:h-[400px] lg:h-[400px]">
+                        <Image
+                          src={imageProps.src}
+                          loader={imageProps.loader}
+                          blurDataURL={imageProps.blurDataURL}
+                          alt={
+                            post.mainImage?.alt || "Blog post image"
+                          }
+                          layout="fill"
+                          objectFit="cover rounded-md"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </Container>
               </div>
             </div>
-          </Container>
 
-          <div className="relative z-0 max-w-2xl box-border	p-5 mx-auto overflow-hidden lg:rounded-lg aspect-video">
-            {imageProps && (
-              <Image
-                src={imageProps.src}
-                loader={imageProps.loader}
-                blurDataURL={imageProps.blurDataURL}
-                alt={post.mainImage?.alt || "Thumbnail"}
-                placeholder="blur"
-                layout="fill"
-                loading="eager"
-                objectFit="cover"
-              />
-            )}
-          </div>
-
-          {/* {post?.mainImage && <MainImage image={post.mainImage} />} */}
-          <Container>
-            <article className="max-w-screen-md mx-auto ">
-              <div className="mx-auto my-3 prose prose-base dark:prose-invert prose-a:text-blue-500">
-                {post.body && <PortableText value={post.body} />}
-              </div>
-              <div className="flex justify-center mt-7 mb-7">
-                <Link href="/">
-                  <a className="px-5 py-2 text-sm text-blue-600 rounded-full dark:text-blue-500 bg-brand-secondary/20 ">
-                    ← View all posts
-                  </a>
-                </Link>
-              </div>
-              {post.author && <AuthorCard author={post.author} />}
-            </article>
-          </Container>
-        </Layout>
+            <Container className="py-10 md:py-20">
+              <article className="max-w-screen-lg mx-auto ">
+                <div className="mx-auto my-3 prose max-w-xl dark:prose-invert prose-a:text-blue-500">
+                  {post.body && <PortableText value={post.body} />}
+                </div>
+                <div className="flex justify-center mt-7 mb-7">
+                  <Link href="/">
+                    <a className="px-5 py-2 text-sm text-blue-600 rounded-full dark:text-blue-500 bg-brand-secondary/20 ">
+                      ← View all posts
+                    </a>
+                  </Link>
+                </div>
+                {post.author && <AuthorCard author={post.author} />}
+              </article>
+            </Container>
+          </Layout>
+        </>
       )}
     </>
   );
 }
-
-const MainImage = ({ image }) => {
-  return (
-    <div className="mt-12 mb-12 ">
-      <Image {...GetImage(image)} alt={image.alt || "Thumbnail"} />
-      <figcaption className="text-center ">
-        {image.caption && (
-          <span className="text-sm italic text-gray-600 dark:text-gray-400">
-            {image.caption}
-          </span>
-        )}
-      </figcaption>
-    </div>
-  );
-};
 
 export async function getStaticProps({ params, preview = false }) {
   const post = await getClient(preview).fetch(singlequery, {
