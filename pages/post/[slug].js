@@ -19,6 +19,7 @@ import { singlequery, configQuery, pathquery } from "@lib/groq";
 import CategoryLabel from "@components/blog/category";
 import AuthorCard from "@components/blog/authorCard";
 import { cx } from "@utils/all";
+import HeroPostList from "@components/heroposts";
 
 export default function Post(props) {
   const { postdata, siteconfig, preview } = props;
@@ -44,14 +45,6 @@ export default function Post(props) {
     ? GetImage(post?.mainImage)
     : null;
 
-  const AuthorimageProps = post?.author?.image
-    ? GetImage(post.author.image)
-    : null;
-
-  const ogimage = siteConfig?.openGraphImage
-    ? GetImage(siteConfig?.openGraphImage).src
-    : defaultOG.src;
-
   return (
     <>
       {post && siteConfig && (
@@ -72,53 +65,74 @@ export default function Post(props) {
             }}
           />
           <Layout>
-            <div className="relative">
-              <div className="relative bg-black text-white max-h-[80vh]">
-                <Container className="flex flex-wrap py-10 md:py-20 items-center">
-                  <div className="w-full md:w-1/2">
-                    <CategoryLabel categories={post.categories} />
-                    <h1 className="text-4xl md:text-6xl font-bold mt-2 mb-3">
+            <>
+              <div className="grid md:grid-cols-2 gap-5 md:gap-10 md:min-h-[calc(100vh-30vh)]">
+                <div className="relative aspect-video md:aspect-auto">
+                  <div
+                    style={{
+                      position: "relative",
+                      width: "100%",
+                      height: "100%"
+                    }}>
+                    <Image
+                      src={imageProps.src}
+                      loader={imageProps.loader}
+                      blurDataURL={imageProps.blurDataURL}
+                      alt={post.mainImage?.alt || "Blog post image"}
+                      layout="fill"
+                      objectFit="cover"
+                      objectPosition="center"
+                    />
+                  </div>
+                </div>
+
+                <div className="self-center px-5 pb-10">
+                  <CategoryLabel categories={post.categories} />
+                  <div className="max-w-2xl">
+                    <h1 className="mt-2  mb-3 text-3xl font-semibold tracking-tight text-white lg:leading-tight text-brand-primary lg:text-5xl">
                       {post.title}
                     </h1>
-                    <div className="flex items-center gap-3 text-white text-sm">
-                      <time
-                        className="text-gray-300"
-                        dateTime={post.publishedAt}>
-                        {new Date(post.publishedAt).toDateString()}
-                      </time>
-                      <span>
-                        · {post.estReadingTime || "5"} min read
-                      </span>
-                    </div>
-                    <div className="mt-5">
-                      {post.categories.map(category => (
-                        <CategoryLabel
-                          key={category._id}
-                          category={category}
-                          className="mr-2"
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="w-full md:w-1/2">
-                    {post.mainImage && (
-                      <div className="relative h-[300px] md:h-[400px] lg:h-[400px]">
-                        <Image
-                          src={imageProps.src}
-                          loader={imageProps.loader}
-                          blurDataURL={imageProps.blurDataURL}
-                          alt={
-                            post.mainImage?.alt || "Blog post image"
-                          }
-                          layout="fill"
-                          objectFit="cover rounded-md"
-                        />
+                    <div className="flex mt-4 space-x-3 text-gray-500 md:mt-8 ">
+                      <div className="flex flex-col gap-3 md:items-center md:flex-row">
+                        <>
+                          <div className="flex items-center gap-3">
+                            <p className="text-gray-100 ">
+                              <Link
+                                href={`/author/${post.author.slug.current}`}>
+                                {post.author.name}
+                              </Link>
+                              <span className="hidden pl-2 md:inline">
+                                {" "}
+                                ·
+                              </span>
+                            </p>
+                          </div>
+                          <div>
+                            <div className="flex space-x-2 text-sm md:flex-row md:items-center">
+                              <time
+                                className="text-white"
+                                dateTime="2022-10-21T06:05:00.000Z">
+                                {format(
+                                  parseISO(post.publishedAt),
+                                  "MMMM dd, yyyy"
+                                )}
+                              </time>
+                              <span className="hidden pl-2 md:inline">
+                                {" "}
+                                ·
+                              </span>
+                              <span className="text-white">
+                                {post.estReadingTime} min read
+                              </span>
+                            </div>
+                          </div>
+                        </>
                       </div>
-                    )}
+                    </div>
                   </div>
-                </Container>
+                </div>
               </div>
-            </div>
+            </>
 
             <Container className="py-10 md:py-20">
               <article className="max-w-screen-lg mx-auto ">
