@@ -62,7 +62,7 @@ export default function Post(props) {
           />
           <HeroSection post={posts[0]} />
 
-          <h1 className="px-5 text-5xl md:text-6xl font-bold text-left mt-10 text-black dark:text-white">
+          <h1 className="px-5 text-3xl md:text-4xl font-bold text-left mt-14 text-black dark:text-white">
             Recent Articles
           </h1>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:px-5 gap-5 px-5">
