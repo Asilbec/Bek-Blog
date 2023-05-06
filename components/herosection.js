@@ -9,24 +9,22 @@ const TechBlogHero = ({ post }) => {
     <>
       <div className="grid md:grid-cols-2 gap-5 md:gap-10 md:min-h-[calc(100vh-30vh)]">
         <div className="relative aspect-video md:aspect-auto">
-          <a href="/post/lifestyle/14-architectural-design-ideas-for-spacious-interior">
-            <img
-              alt="Thumbnail"
-              src={urlFor(post.mainImage).url()}
-              fetchpriority="high"
-              decoding="async"
-              data-nimg="fill"
-              className="object-cover"
-              sizes="100vw"
-              style={{
-                position: "absolute",
-                height: "100%",
-                width: "100%",
-                inset: 0,
-                color: "transparent"
-              }}
-            />
-          </a>
+          <img
+            alt="Thumbnail"
+            src={urlFor(post.mainImage).url()}
+            fetchpriority="high"
+            decoding="async"
+            data-nimg="fill"
+            className="object-cover"
+            sizes="100vw"
+            style={{
+              position: "absolute",
+              height: "100%",
+              width: "100%",
+              inset: 0,
+              color: "transparent"
+            }}
+          />
         </div>
         <div className="self-center px-5 pb-10">
           <CategoryLabel categories={post.categories} />

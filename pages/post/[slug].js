@@ -45,16 +45,6 @@ export default function Post(props) {
     ? GetImage(post?.mainImage)
     : null;
 
-  const AuthorimageProps = post?.author?.image
-    ? GetImage(post.author.image)
-    : null;
-
-  const ogimage = siteConfig?.openGraphImage
-    ? GetImage(siteConfig?.openGraphImage).src
-    : defaultOG.src;
-
-  console.log(post.author);
-
   return (
     <>
       {post && siteConfig && (
@@ -99,44 +89,44 @@ export default function Post(props) {
                 <div className="self-center px-5 pb-10">
                   <CategoryLabel categories={post.categories} />
                   <div className="max-w-2xl">
-                    <h1 className="mt-2 hover:underline hover:cursor-pointer mb-3 text-3xl font-semibold tracking-tight text-white lg:leading-tight text-brand-primary lg:text-5xl">
+                    <h1 className="mt-2  mb-3 text-3xl font-semibold tracking-tight text-white lg:leading-tight text-brand-primary lg:text-5xl">
                       {post.title}
                     </h1>
                     <div className="flex mt-4 space-x-3 text-gray-500 md:mt-8 ">
                       <div className="flex flex-col gap-3 md:items-center md:flex-row">
-                        <Link
-                          href={`/author/${post.author.slug.current}`}>
-                          <>
-                            <div className="flex items-center gap-3">
-                              <p className="text-gray-100 ">
+                        <>
+                          <div className="flex items-center gap-3">
+                            <p className="text-gray-100 ">
+                              <Link
+                                href={`/author/${post.author.slug.current}`}>
                                 {post.author.name}
-                                <span className="hidden pl-2 md:inline">
-                                  {" "}
-                                  ·
-                                </span>
-                              </p>
+                              </Link>
+                              <span className="hidden pl-2 md:inline">
+                                {" "}
+                                ·
+                              </span>
+                            </p>
+                          </div>
+                          <div>
+                            <div className="flex space-x-2 text-sm md:flex-row md:items-center">
+                              <time
+                                className="text-white"
+                                dateTime="2022-10-21T06:05:00.000Z">
+                                {format(
+                                  parseISO(post.publishedAt),
+                                  "MMMM dd, yyyy"
+                                )}
+                              </time>
+                              <span className="hidden pl-2 md:inline">
+                                {" "}
+                                ·
+                              </span>
+                              <span className="text-white">
+                                {post.estReadingTime} min read
+                              </span>
                             </div>
-                            <div>
-                              <div className="flex space-x-2 text-sm md:flex-row md:items-center">
-                                <time
-                                  className="text-white"
-                                  dateTime="2022-10-21T06:05:00.000Z">
-                                  {format(
-                                    parseISO(post.publishedAt),
-                                    "MMMM dd, yyyy"
-                                  )}
-                                </time>
-                                <span className="hidden pl-2 md:inline">
-                                  {" "}
-                                  ·
-                                </span>
-                                <span className="text-white">
-                                  {post.estReadingTime} min read
-                                </span>
-                              </div>
-                            </div>
-                          </>
-                        </Link>
+                          </div>
+                        </>
                       </div>
                     </div>
                   </div>
