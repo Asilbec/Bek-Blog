@@ -58,25 +58,15 @@ export default function Post(props) {
               cardType: "summary_large_image"
             }}
           />
-          <Container>
-            <h1 className="text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
-              All Blogs
-            </h1>
-            <div className="text-center">
-              <p className="mt-2 text-lg">
-                See all posts I have ever written.
-              </p>
-            </div>
-            <div className="grid  mt-10 lg:gap-10 md:grid-cols-2 xl:grid-cols-4 ">
-              {posts.map(post => (
-                <PostList
-                  key={post._id}
-                  post={post}
-                  aspect="square"
-                />
-              ))}
-            </div>
-          </Container>
+          <h1 className="text-4xl md:text-6xl font-bold text-left md:px-5 mt-10 text-black dark:text-white">
+            All Articles
+          </h1>
+          <div className="text-center"></div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:px-5 gap-5">
+            {posts.map(post => (
+              <PostList key={post._id} post={post} aspect="square" />
+            ))}
+          </div>
         </Layout>
       )}
     </>
