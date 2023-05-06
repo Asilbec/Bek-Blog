@@ -65,7 +65,7 @@ export default function Navbar(props) {
         <Disclosure>
           {({ open }) => (
             <>
-              <div className=" flex flex-wrap justify-between md:gap-10 ml-2 md:flex-nowrap">
+              <div className=" flex  justify-between md:gap-10 ml-2 md:flex-nowrap">
                 <Link href="/">
                   <a className="w-16 dark:hidden">
                     {props.logo ? (
